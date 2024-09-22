@@ -1,0 +1,21 @@
+def caesar_cipher(text, shift):
+    encrypted_text = ""
+    for char in text:
+        if char.isupper():
+            encrypted_text += chr((ord(char) + shift - 65) % 26 + 65)
+        elif char.islower():
+            encrypted_text += chr((ord(char) + shift - 97) % 26 + 97)
+        else:
+            encrypted_text += char
+    return encrypted_text
+
+def decrypt_caesar_cipher(text, shift):
+    return caesar_cipher(text, -shift)
+
+if __name__ == "__main__":
+    message = "hello nigeria"
+    shift_value = 3
+    encrypted_message = caesar_cipher(message, shift_value)
+    print(f"Encrypted Message: {encrypted_message}")
+    decrypted_message = decrypt_caesar_cipher(encrypted_message, shift_value)
+    print(f"Decrypted Message: {decrypted_message}")
